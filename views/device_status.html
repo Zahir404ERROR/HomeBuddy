@@ -1,0 +1,50 @@
+<!-- Device Status page -->
+<!doctype html>
+<html>
+
+<head>
+    <!-- Stylesheets -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <div class="topnav">
+        <h1 class="logo"> HomeBuddy </h1>
+        <!-- Top Navigation Menu -->
+        <a href="/">Home</a>
+        <a href="/add_device">Add Device</a>
+        <a href="/device_status">Device Status</a>
+        <a href="/control_device">Control device</a>
+        <a href="/delete_device">Delete Device</a>
+    </div>
+    <title>Device Status</title>
+</head>
+
+<body>
+
+    <div id="container">
+        <h1> Device Status </h1>
+        <h3>You can see the Status of all devices here:</h3>
+        <!-- Device Status Tiles -->
+        <div class="device_container">
+            <% allDevices.forEach(function(device){ %>
+                <div class="device_tile">
+                    <p> <strong> <%= device.name %> </strong>
+                    <br> <%= device.device_type %> 
+                    <br> <strong> <%= device.power %> </strong>
+                    <br> <strong><%= device.state %></strong>
+                    <br>Temperature: <%= device.temperature %> C
+                    <br>Volume: <%= device.volume %> %
+                    <br>Brightness: <%= device.brightness %> %
+                    <br>Power: <%= device.power_use %> W</p>
+                </div>
+            <% }) %>
+        </div>
+
+    </div>
+    <footer>
+        <div class="footer">
+            <p>HomeBuddy Solutions</p>
+        </div>
+    </footer>
+</body>
+
+</html>

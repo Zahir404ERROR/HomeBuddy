@@ -1,0 +1,46 @@
+<!-- Delete Device Page -->
+<!doctype html>
+<html>
+
+<head>
+    <!-- Stylesheets -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+        <h1 class="logo"> HomeBuddy </h1>
+        <a href="/">Home</a>
+        <a href="/add_device">Add Device</a>
+        <a href="/device_status">Device Status</a>
+        <a href="/control_device">Control device</a>
+        <a href="/delete_device">Delete Device</a>
+    </div>
+    <title>Delete Device</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1> Delete Device </h1>
+        <h3>You can see the Status of all devices here:</h3>
+        <form method="POST" action="/deletedevice">
+            <!-- Name of device -->
+            <select name="name" id="name">
+                <% allDevices.forEach(function(device){ %>
+                    <option value="<%= device.name %>">
+                        <%= device.name %>
+                    </option>
+                    <% }) %>
+            </select>
+            <br>
+            <!-- Submit button -->
+            <input type="submit" value="Delete Device" />
+        </form>
+    </div>
+    <footer>
+        <div class="footer">
+            <p>HomeBuddy Solutions</p>
+        </div>
+    </footer>
+</body>
+
+</html>

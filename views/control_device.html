@@ -1,0 +1,45 @@
+<!-- Control Device Page -->
+<!doctype html>
+<html>
+
+<head>
+    <!-- Stylesheets -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+        <h1 class="logo"> HomeBuddy </h1>
+        <a href="/">Home</a>
+        <a href="/add_device">Add Device</a>
+        <a href="/device_status">Device Status</a>
+        <a href="/control_device">Control device</a>
+        <a href="/delete_device">Delete Device</a>
+    </div>
+    <title>Device Status</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1> Device Control</h1>
+        <h3>You can control all devices here:</h3>
+        <!-- A device selector input which allows the user to select a device from a list of created devices -->
+        <form action="/update_form" method="GET">
+            <select id="device_type" name="keyword">
+                <% allDevices.forEach(function(device){ %>
+                    <option value="<%= device.name %>">
+                        <%= device.name %>
+                    </option>
+                <% }) %>
+            </select>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <footer>
+        <div class="footer">
+            <p>HomeBuddy Solutions</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!-- Add Device page -->
+<!doctype html>
+<html>
+
+<head>
+    <!-- Stylesheets -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+        <h1 class="logo"> HomeBuddy </h1>
+        <a href="/">Home</a>
+        <a href="/add_device">Add Device</a>
+        <a href="/device_status">Device Status</a>
+        <a href="/control_device">Control device</a>
+        <a href="/delete_device">Delete Device</a>
+    </div>
+    <title>Add device</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1> Add your device </h1>
+        <p>Please Add your device into homebuddy system</p>
+        <!-- Form to add a new device to the database with the following fields -->
+        <!-- POST action - collects the form data and passes it to the server -->
+        <form method="POST" action="/adddevice">
+            <!-- Name of device -->
+            <input id="name" type="text" name="name" value="Device Name" />
+            <br>
+
+            <!-- Type of device - Include at least 10 types-->
+            <select class="my-select-menu" name="device_type" id="device_type" onchange="myFunction()">
+                <option value="">Select Device Type</option>
+                <option value="Smart Speakers">Smart Speakers</option>
+                <option value="Smart Plugs">Smart Plugs</option>
+                <option value="Smart Bulbs">Smart Bulbs</option>
+                <option value="Smart Thermostats">Smart Thermostats</option>
+                <option value="Smart Cookers">Smart Cookers</option>
+                <option value="Smart Mattresses">Smart Mattresses</option>
+                <option value="Smart Hub">Smart Hub</option>
+                <option value="Smart Door">Smart Door</option>
+                <option value="Smart Airconditioner">Smart Airconditioner</option>
+                <option value="Smart Fridge">Smart Fridge</option>
+            </select>
+            <!-- Other input fields -->
+            <!-- Power - On/Off -->
+            <br>
+            <label for="powerLabel">Power : </label>
+            <select name="power" id="power">
+                <option value="">Select ON/OFF</option>
+                <option value="ON">ON</option>
+                <option value="OFF">OFF</option>
+            </select>
+            <label for="stateLabel">State : </label>
+            <select name="state" id="state">
+                <option value="">Select Open/Close</option>
+                <option value="Open">Open</option>
+                <option value="Close">Close</option>
+            </select>
+
+            <br>
+            <!-- Temperature -->
+            <label for="temperatureLabel">Temperature : </label>
+            <input id="temperature" type="text" name="temperature" value="" />
+            <label for="temperatureUnit">°C</label>
+            <br>
+            <label for="volumeLabel">Volume : </label>
+            <input id="volume" type="text" name="volume" value="" />
+            <label for="volumeUnit"> %</label>
+            <br>
+            <label for="brightnessLabel">Brightness : </label>
+            <input id="brightness" type="text" name="brightness" value="" />
+            <label for="brightnessUnit"> %</label>
+            <br>
+            <label for="powerUseLabel">Power : </label>
+            <input id="power_use" type="text" name="power_use" value="" />
+            <label for="powerUnit"> W </label>
+            <br>
+            <!-- Submit button -->
+            <input type="submit" value="Add Device" />
+        </form>
+    </div>
+
+
+
+    <footer>
+        <div class="footer">
+            <p>HomeBuddy Solutions</p>
+        </div>
+        <script src="main.js"></script>
+        <p id="demo"></p>
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("device_type").value;
+                if (x == "Smart Speakers") {
+                    document.getElementById("temperature").value = '0';
+                    document.getElementById("volume").value = 'Input Here';
+                    document.getElementById("brightness").value = '0';
+                    document.getElementById("power_use").value = '0';
+                }
+                else if (x == "Smart Plugs" || x == "Smart Hub") {
+                    document.getElementById("temperature").value = '0';
+                    document.getElementById("volume").value = '0';
+                    document.getElementById("brightness").value = '0';
+                    document.getElementById("power_use").value = 'Input Here';
+                }
+                else if (x == "Smart Thermostats" || x == "Smart Cookers" || x == "Smart Mattresses"|| x == "Smart Airconditioner" || x =="Smart Airconditioner" || x=="Smart Fridge") {
+                    document.getElementById("temperature").value = 'Input Here';
+                    document.getElementById("volume").value = '0';
+                    document.getElementById("brightness").value = '0';
+                    document.getElementById("power_use").value = '0';
+                }
+                else if (x == "Smart Bulbs") {
+                    document.getElementById("temperature").value = '0';
+                    document.getElementById("volume").value = '0';
+                    document.getElementById("brightness").value = 'Input Here';
+                    document.getElementById("power_use").value = '0';
+                }
+                else if (x == "Smart Door") {
+                    document.getElementById("temperature").value = '0';
+                    document.getElementById("volume").value = '0';
+                    document.getElementById("brightness").value = '0';
+                    document.getElementById("power_use").value = '0';
+                }
+            }
+        </script>
+    </footer>
+</body>
+
+</html>

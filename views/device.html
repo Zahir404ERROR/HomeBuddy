@@ -1,0 +1,77 @@
+<!-- Control Device Form Page -->
+<!doctype html>
+<html>
+
+<head>
+    <!-- Stylesheets -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+        <h1 class="logo"> HomeBuddy </h1>
+        <a href="/">Home</a>
+        <a href="/add_device">Add Device</a>
+        <a href="/device_status">Device Status</a>
+        <a href="/control_device">Control device</a>
+        <a href="/delete_device">Delete Device</a>
+    </div>
+    <title>List webpage!</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1> Control Your Device </h1>
+        <h3>You can select and control your device here</h3>
+        <% availableDevices.forEach(function(device){ %>
+            <!-- Form with inputs to control devices -->
+            <form method="POST" action="/controldevice">
+                <input id="name" type="text" name="name" value="<%= device.name %>" />
+                <!-- Type of device - Include at least 10 types-->
+                <p>
+                    <%= device.device_type %>
+                </p>
+
+                <!-- Other input fields -->
+                <!-- Power - On/Off -->
+                <select name="power" id="power">
+                    <option value="">Select ON/OFF</option>
+                    <option value="ON">ON</option>
+                    <option value="OFF">OFF</option>
+                </select>
+                <!-- State - Open/Close -->
+                <select name="state" id="state">
+                    <option value="">Select Open/Close</option>
+                    <option value="open">Open</option>
+                    <option value="close">Close</option>
+                </select> <br>
+
+                <!-- Temperature -->
+                <label for="temperatureLabel">Temperature : </label>
+                <input id="temperature" type="text" name="temperature" value="<%= device.temperature %>" />
+                <label for="temperatureUnit">°C</label>
+                <br>
+                <label for="volumeLabel">Volume : </label>
+                <input id="volume" type="text" name="volume" value="<%= device.volume %>" />
+                <label for="volumeUnit"> %</label>
+                <br>
+                <label for="brightnessLabel">Brightness : </label>
+                <input id="brightness" type="text" name="brightness" value="<%= device.brightness %>" />
+                <label for="brightnessUnit"> lumen </label>
+                <br>
+                <label for="powerUseLabel">Power : </label>
+                <input id="power_use" type="text" name="power_use" value="<%= device.power_use %>" />
+                <label for="powerUnit"> W </label>
+                <br>
+                <!-- Submit button -->
+                <input type="submit" value="Update Device" />
+            </form>
+            <% }) %>
+    </div>
+    <footer>
+        <div class="footer">
+            <p>HomeBuddy Solutions</p>
+        </div>
+    </footer>
+</body>
+
+</html>
